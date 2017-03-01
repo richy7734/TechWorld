@@ -15,7 +15,7 @@
 <body>
 	<%@include file="Header.jsp"%>
 	<script type="text/javascript" src="${dt}/js/jquery.dataTables.js"></script>
-	
+
 	<div class="container">
 		<table id="productTable" class="table table-hover">
 			<thead>
@@ -43,24 +43,37 @@
 </body>
 
 <script type="text/javascript">
-	$('#productTable').DataTable({
-		ajax : {
-			url : '/TechWorld/products/all/pro',
-			dataSrc : ''
-		},
-		columns : [ {
-			data : 'pName'
-		}, {
-			data : 'category'
-		}, {
-			data : 'description'
-		}, {
-			data : 'cost'
-		}, {
-			data : 'imageUrl'
-		}, {
-			data : '<a class= "btn btn-info" href = "#">View</a>'
-		} ]
-	});
+	$('#productTable')
+			.DataTable(
+					{
+						ajax : {
+							url : '/TechWorld/products/all/pro',
+							dataSrc : ''
+						},
+						columns : [
+								{
+									data : 'pName'
+								},
+								{
+									data : 'category'
+								},
+								{
+									data : 'description'
+								},
+								{
+									data : 'cost'
+								},
+								{
+									data : 'imageUrl',
+									mRender : function(data, type, full) {
+										return '<img src="${product}/'+data+'.jpg" height="170px" width="190px">';
+									}
+								},
+								{
+									mRender : function(data, type, full) {
+										return '<a class = "btn btn-danger" href="'+data+'">View</a>';
+									}
+								} ]
+					});
 </script>
 </html>
