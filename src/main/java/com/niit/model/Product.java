@@ -1,7 +1,15 @@
 package com.niit.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pId;
 	private String brand;
 	private String pName;
@@ -9,18 +17,6 @@ public class Product {
 	private String description;
 	private int cost;
 	private String imageUrl;
-
-	public Product(int pId, String brand, String pName, String category, String description, int cost,
-			String imageUrl) {
-		super();
-		this.pId = pId;
-		this.brand = brand;
-		this.pName = pName;
-		this.category = category;
-		this.description = description;
-		this.cost = cost;
-		this.imageUrl = imageUrl;
-	}
 
 	public String getCategory() {
 		return category;
